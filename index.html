@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Percentage Calculator - Free Online Percentage Calculator Tool</title>
+    <meta name="description" content="Free online percentage calculator tool. Calculate percentages, percentage increase/decrease, tips, discounts, and more. Fast, accurate, and easy to use.">
+    <meta name="keywords" content="percentage calculator, percent calculator, percentage calculation, discount calculator, tip calculator, percentage increase, percentage decrease">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://findpercentagecalculator.net/">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Find Percentage Calculator - Free Online Tool">
+    <meta property="og:description" content="Calculate percentages quickly and accurately with our free online percentage calculator. Perfect for discounts, tips, and financial calculations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://findpercentagecalculator.net/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Find Percentage Calculator - Free Online Tool">
+    <meta name="twitter:description" content="Calculate percentages quickly and accurately with our free online percentage calculator.">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Find Percentage Calculator",
+        "description": "Free online percentage calculator for calculating percentages, discounts, tips, and more",
+        "url": "https://findpercentagecalculator.net/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .calculator-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .calculator-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .calculator-title {
+            font-size: 1.5rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .calc-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .result {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #48bb78;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .features {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .features h2 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .faq {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .faq h2 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f7fafc;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #2d3748;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+        
+        .faq-question:hover {
+            background: #edf2f7;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 200px;
+        }
+        
+        .recommended-sites {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .recommended-sites h2 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .site-link {
+            display: block;
+            padding: 12px 16px;
+            background: #f7fafc;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .site-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .calculator-section {
+                padding: 20px;
+            }
+            
+            .features, .faq, .recommended-sites {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Find Percentage Calculator</h1>
+            <p class="subtitle">The Ultimate Free Online Percentage Calculator Tool</p>
+            <p>Calculate percentages quickly and accurately for all your needs - from shopping discounts to financial analysis</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="calculator-section">
+                <h2 class="calculator-title">Basic Percentage Calculator</h2>
+                <div class="calc-group">
+                    <label for="value">Value:</label>
+                    <input type="number" id="value" placeholder="Enter the value" step="any">
+                </div>
+                <div class="calc-group">
+                    <label for="total">Total:</label>
+                    <input type="number" id="total" placeholder="Enter the total" step="any">
+                </div>
+                <button class="btn" onclick="calculateBasic()">Calculate Percentage</button>
+                <div class="result" id="basicResult"></div>
+            </div>
+            
+            <div class="calculator-section">
+                <h2 class="calculator-title">Percentage of a Number</h2>
+                <div class="calc-group">
+                    <label for="percentage">Percentage (%):</label>
+                    <input type="number" id="percentage" placeholder="Enter percentage" step="any">
+                </div>
+                <div class="calc-group">
+                    <label for="number">Number:</label>
+                    <input type="number" id="number" placeholder="Enter the number" step="any">
+                </div>
+                <button class="btn" onclick="calculatePercentageOf()">Calculate Result</button>
+                <div class="result" id="percentageOfResult"></div>
+            </div>
+            
+            <div class="calculator-section">
+                <h2 class="calculator-title">Percentage Increase/Decrease</h2>
+                <div class="calc-group">
+                    <label for="originalValue">Original Value:</label>
+                    <input type="number" id="originalValue" placeholder="Enter original value" step="any">
+                </div>
+                <div class="calc-group">
+                    <label for="newValue">New Value:</label>
+                    <input type="number" id="newValue" placeholder="Enter new value" step="any">
+                </div>
+                <button class="btn" onclick="calculateChange()">Calculate Change</button>
+                <div class="result" id="changeResult"></div>
+            </div>
+            
+            <div class="calculator-section">
+                <h2 class="calculator-title">Discount Calculator</h2>
+                <div class="calc-group">
+                    <label for="originalPrice">Original Price:</label>
+                    <input type="number" id="originalPrice" placeholder="Enter original price" step="any">
+                </div>
+                <div class="calc-group">
+                    <label for="discountPercent">Discount (%):</label>
+                    <input type="number" id="discountPercent" placeholder="Enter discount percentage" step="any">
+                </div>
+                <button class="btn" onclick="calculateDiscount()">Calculate Discount</button>
+                <div class="result" id="discountResult"></div>
+            </div>
+        </div>
+        
+        <section class="features">
+            <h2>Why Choose Our Percentage Calculator?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🚀 Lightning Fast</h3>
+                    <p>Get instant results with our optimized calculation engine. No waiting, no delays.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 Mobile Friendly</h3>
+                    <p>Perfect responsive design that works seamlessly on all devices and screen sizes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Accurate Results</h3>
+                    <p>Precision calculations with support for decimals and complex percentage operations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🆓 Completely Free</h3>
+                    <p>No registration, no hidden fees, no limitations. Use all features without any cost.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Privacy First</h3>
+                    <p>All calculations are performed locally. Your data never leaves your device.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Multiple Calculators</h3>
+                    <p>Basic percentage, percentage of number, increase/decrease, and discount calculations.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What is a percentage and how is it calculated?
+                </div>
+                <div class="faq-answer">
+                    A percentage is a way of expressing a number as a fraction of 100. It's calculated by dividing the part by the whole and multiplying by 100. For example, if you have 25 out of 100 items, that's 25/100 × 100 = 25%.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I calculate percentage increase or decrease?
+                </div>
+                <div class="faq-answer">
+                    To calculate percentage change: ((New Value - Original Value) / Original Value) × 100. If the result is positive, it's an increase. If negative, it's a decrease.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I use this calculator for business and financial calculations?
+                </div>
+                <div class="faq-answer">
+                    Absolutely! Our calculator is perfect for business use including profit margin calculations, growth rate analysis, discount pricing, tax calculations, and financial reporting.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is this percentage calculator accurate for large numbers?
+                </div>
+                <div class="faq-answer">
+                    Yes, our calculator handles both small and large numbers with high precision. It supports decimal places and can work with numbers in the millions or billions.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How do I calculate what percentage one number is of another?
+                </div>
+                <div class="faq-answer">
+                    Use our basic percentage calculator. Enter the smaller number as "Value" and the larger number as "Total". The result shows what percentage the first number represents of the second.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I calculate tips and discounts with this tool?
+                </div>
+                <div class="faq-answer">
+                    Yes! Use the discount calculator for shopping discounts, or the percentage of a number calculator for tip calculations. For example, to calculate a 15% tip on $50, enter 15% and $50.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Do you store my calculation data?
+                </div>
+                <div class="faq-answer">
+                    No, we don't store any of your calculation data. All calculations are performed locally in your browser, ensuring complete privacy and security.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What's the difference between percentage and percentile?
+                </div>
+                <div class="faq-answer">
+                    A percentage is a proportion out of 100, while a percentile indicates the value below which a certain percentage of data falls. For example, scoring in the 90th percentile means you scored better than 90% of test takers.
+                </div>
+            </div>
+        </section>
+        
+        <section class="recommended-sites">
+            <h2>Recommended Useful Tools & Sites</h2>
+            <div class="sites-grid">
+                <a href="https://hellowordl.cc/" target="_blank" class="site-link">Hello Wordl</a>
+                <a href="https://www.globeask.com/" target="_blank" class="site-link">Globe Ask</a>
+                <a href="https://live-clock.com/" target="_blank" class="site-link">Live Clock</a>
+                <a href="https://www.pokemonguide.org/" target="_blank" class="site-link">Pokemon Guide</a>
+                <a href="https://www.strongrandompassword.com/" target="_blank" class="site-link">Strong Random Password Generator</a>
+                <a href="https://www.myipinquire.com/" target="_blank" title="ipsaya" class="site-link">IP Saya</a>
+                <a href="https://www.calculationassistant.com/" target="_blank" class="site-link">Calculation Assistant</a>
+                <a href="https://www.whatismyipaddressinquire.com/" target="_blank" class="site-link">Random IP</a>
+                <a href="https://www.masters-tool.com/" target="_blank" class="site-link">Masters Tool</a>
+                <a href="https://www.mathematicalcalculator.com/" target="_blank" class="site-link">Mathematical Calculator</a>
+                <a href="https://tothepowerof2.com/" target="_blank" class="site-link">2 to the Power of What is 1/64</a>
+                <a href="https://littlebeartools.com/" target="_blank" class="site-link">Little Bear Tools</a>
+                <a href="https://snailsbob.org/" target="_blank" class="site-link">Snail Bob</a>
+                <a href="https://redlightgreenlightgame.net/" target="_blank" class="site-link">Red Light Green Light Game</a>
+                <a href="https://excelgames.cc/" target="_blank" class="site-link">Excel Game</a>
+                <a href="https://block-blast-unblocked.com/" target="_blank" class="site-link">Block Blast Unblocked</a>
+                <a href="https://incrediboxsprunkifree.org/" target="_blank" class="site-link">Incredibox Sprunki</a>
+                <a href="https://todayluckynumber.org" target="_blank" class="site-link">Today Lucky Number</a>
+                <a href="https://military-time-chart.org/" target="_blank" class="site-link">Military Time Chart</a>
+                <a href="https://chronologicalagescalculator.com/" target="_blank" class="site-link">Chronological Age Calculator</a>
+                <a href="https://12weeksfromtoday.com/" target="_blank" class="site-link">12 Weeks From Today</a>
+                <a href="https://weeks-from-today.com/" target="_blank" class="site-link">Weeks From Today</a>
+                <a href="https://bottleneckcalculator.work/" target="_blank" class="site-link">Bottleneck Calculator</a>
+                <a href="https://letterstonumbers.com/" target="_blank" class="site-link">Letters to Numbers</a>
+                <a href="https://bratfontgenerator.com/" target="_blank" class="site-link">Brat Font Generator</a>
+                <a href="https://tap-code.org/" target="_blank" class="site-link">Tap Code</a>
+                <a href="https://5letterwordswithiinthemiddle.com/" target="_blank" class="site-link">5 Letter Words with I in the Middle</a>
+                <a href="https://freaky-font.net/" target="_blank" class="site-link">Freaky Font</a>
+                <a href="https://heartemoji.net/" target="_blank" class="site-link">Heart Emoji</a>
+                <a href="https://villainnamegenerator.org/" target="_blank" class="site-link">Villain Name Generator</a>
+                <a href="https://crazycattle3ditch.com/" target="_blank" class="site-link">Crazy Cattle 3D</a>
+                <a href="https://checkersonline247.com/" target="_blank" class="site-link">Checkers Online</a>
+                <a href="https://collapsible-stool.com/" target="_blank" title="Collapsible Stool" class="site-link">Collapsible Stool</a>
+                <a href="https://overallsshop.com/" target="_blank" title="Overalls" class="site-link">Overalls</a>
+                <a href="https://datecalculators.org/" target="_blank" title="Date Calculator" class="site-link">Date Calculator</a>
+                <a href="https://www.shopsages.com/" target="_blank" title="Shop Sages" class="site-link">Shop Sages</a>
+                <a href="https://sleepcalculators.org/" target="_blank" title="Sleep Calculator" class="site-link">Sleep Calculator</a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Find Percentage Calculator. All rights reserved.</p>
+            <p>Free online percentage calculator tool for all your calculation needs</p>
+        </footer>
+    </div>
+    
+    <script>
+        function calculateBasic() {
+            const value = parseFloat(document.getElementById('value').value);
+            const total = parseFloat(document.getElementById('total').value);
+            const resultDiv = document.getElementById('basicResult');
+            
+            if (isNaN(value) || isNaN(total) || total === 0) {
+                resultDiv.innerHTML = '⚠️ Please enter valid numbers';
+                resultDiv.className = 'result show';
+                return;
+            }
+            
+            const percentage = (value / total) * 100;
+            resultDiv.innerHTML = `✅ ${value} is <strong>${percentage.toFixed(2)}%</strong> of ${total}`;
+            resultDiv.className = 'result show';
+        }
+        
+        function calculatePercentageOf() {
+            const percentage = parseFloat(document.getElementById('percentage').value);
+            const number = parseFloat(document.getElementById('number').value);
+            const resultDiv = document.getElementById('percentageOfResult');
+            
+            if (isNaN(percentage) || isNaN(number)) {
+                resultDiv.innerHTML = '⚠️ Please enter valid numbers';
+                resultDiv.className = 'result show';
+                return;
+            }
+            
+            const result = (percentage / 100) * number;
+            resultDiv.innerHTML = `✅ ${percentage}% of ${number} is <strong>${result.toFixed(2)}</strong>`;
+            resultDiv.className = 'result show';
+        }
+        
+        function calculateChange() {
+            const originalValue = parseFloat(document.getElementById('originalValue').value);
+            const newValue = parseFloat(document.getElementById('newValue').value);
+            const resultDiv = document.getElementById('changeResult');
+            
+            if (isNaN(originalValue) || isNaN(newValue) || originalValue === 0) {
+                resultDiv.innerHTML = '⚠️ Please enter valid numbers';
+                resultDiv.className = 'result show';
+                return;
+            }
+            
+            const change = ((newValue - originalValue) / originalValue) * 100;
+            const changeType = change >= 0 ? 'increase' : 'decrease';
+            const changeIcon = change >= 0 ? '📈' : '📉';
+            
+            resultDiv.innerHTML = `${changeIcon} <strong>${Math.abs(change).toFixed(2)}%</strong> ${changeType} (from ${originalValue} to ${newValue})`;
+            resultDiv.className = 'result show';
+        }
+        
+        function calculateDiscount() {
+            const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+            const discountPercent = parseFloat(document.getElementById('discountPercent').value);
+            const resultDiv = document.getElementById('discountResult');
+            
+            if (isNaN(originalPrice) || isNaN(discountPercent)) {
+                resultDiv.innerHTML = '⚠️ Please enter valid numbers';
+                resultDiv.className = 'result show';
+                return;
+            }
+            
+            const discountAmount = (discountPercent / 100) * originalPrice;
+            const finalPrice = originalPrice - discountAmount;
+            
+            resultDiv.innerHTML = `💰 Discount: <strong>$${discountAmount.toFixed(2)}</strong><br>Final Price: <strong>$${finalPrice.toFixed(2)}</strong>`;
+            resultDiv.className = 'result show';
+        }
+        
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isOpen = answer.classList.contains('show');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't already open
+            if (!isOpen) {
+                answer.classList.add('show');
+                element.classList.add('active');
+            }
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const activeElement = document.activeElement;
+                if (activeElement.tagName === 'INPUT') {
+                    const calculator = activeElement.closest('.calculator-section');
+                    const button = calculator.querySelector('.btn');
+                    button.click();
+                }
+            }
+        });
+        
+        // Add input validation
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', function() {
+                this.style.borderColor = this.value ? '#48bb78' : '#e2e8f0';
+            });
+        });
+    </script>
+</body>
+</html>
